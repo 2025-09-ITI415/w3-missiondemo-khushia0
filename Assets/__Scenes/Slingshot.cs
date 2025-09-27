@@ -69,7 +69,7 @@ public class Slingshot : MonoBehaviour {
             projRB.isKinematic = false;
 
             // Launch the projectile
-            projRB.velocity = -mouseDelta * velocityMult;
+            projRB.linearVelocity = -mouseDelta * velocityMult;
 
             // 👇 Tell the camera to follow this projectile
             FollowCam.POI = projectile;
