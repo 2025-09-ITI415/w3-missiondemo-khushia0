@@ -6,6 +6,7 @@ public class Slingshot : MonoBehaviour {
     [Header("Inscribed")]
     public GameObject projectilePrefab;   // Prefab for the projectile
     public float velocityMult = 10f;      // Multiplier for launch velocity
+    public GameObject projLinePrefab;     // Prefab for the projectile trail
 
     [Header("Dynamic")]
     public GameObject launchPoint;        // Where the projectile spawns
@@ -71,8 +72,11 @@ public class Slingshot : MonoBehaviour {
             // Launch the projectile
             projRB.velocity = -mouseDelta * velocityMult;
 
-            // 👇 Tell the camera to follow this projectile
+            // Tell the camera to follow this projectile
             FollowCam.POI = projectile;
+
+            // 👇 Add a ProjectileLine to this projectile
+            Instantiate<GameObject>(projLinePrefab, projectile.transform);
 
             // Reset projectile so we can shoot again later
             projectile = null;
